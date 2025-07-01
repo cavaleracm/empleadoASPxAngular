@@ -1,0 +1,28 @@
+<div style="margin-top: 32px;">
+  <table border="1" cellpadding="5" cellspacing="0" style="width: 100%; text-align: left;">
+    <thead>
+      <tr>
+        <th>Num</th>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Teléfono</th>
+        <th>Fecha Nacimiento</th>
+        <th>Sexo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of empleados; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ emp.nombre }}</td>
+        <td>{{ emp.correo }}</td>
+        <td>{{ emp.telefono }}</td>
+        <td>{{ emp.fechaNacimiento | date: 'dd/MM/yy' }}</td>
+        <td>{{ emp.sexo }}</td>
+        <td>
+          <a href="#" (click)="eliminar(emp.id)" style="color: blue;">Eliminar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
