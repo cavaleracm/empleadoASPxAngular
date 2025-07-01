@@ -1,4 +1,3 @@
-// empleado.component.ts
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmpleadoService } from '../../services/empleados.service';
@@ -29,6 +28,7 @@ export class EmpleadoComponent {
       next: () => {
         alert('Empleado registrado con éxito');
         this.empleadoForm.reset();
+        this.EmpleadoService.notificarEmpleadoCreado();
       },
       error: (err) => console.error('Error al guardar', err)
     });

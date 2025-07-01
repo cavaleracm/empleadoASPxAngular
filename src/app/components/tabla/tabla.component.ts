@@ -6,18 +6,20 @@ import { EmpleadoService } from '../../services/empleados.service';
 @Component({
   selector: 'app-tabla',
   standalone: true,
-  imports: [CommonModule], // 👈 Necesario para *ngFor, *ngIf y pipes como date
+  imports: [CommonModule],
   templateUrl: './tabla.component.html',
-  styleUrls: ['./tabla.component.css'] // Si no usas estilos, puedes quitar esta línea
 })
 export class TablaComponent implements OnInit {
   empleados: IEmpleado[] = [];
 
   constructor(private empleadoService: EmpleadoService) {}
 
-  ngOnInit(): void {
+ngOnInit(): void {
+  this.cargarEmpleados();
+  this.empleadoService.empleadoCreado$.subscribe(() => {
     this.cargarEmpleados();
-  }
+  });
+}
 
   cargarEmpleados(): void {
     this.empleadoService.getList().subscribe({
@@ -35,7 +37,6 @@ export class TablaComponent implements OnInit {
     }
   }
 
-  // Opcional: para mejorar rendimiento del *ngFor
   trackById(index: number, item: IEmpleado): number {
     return item.id;
   }

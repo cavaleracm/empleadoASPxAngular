@@ -1,27 +1,30 @@
-<div style="border: 1px solid black; width: 400px; padding: 16px;">
-  <h3>Registro</h3>
+<div style="border: 1px solid #ccc; border-radius: 5px; padding: 16px; width: 600px; margin: 0 auto; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+  <h2 style="border-bottom: 1px solid #eee; padding-bottom: 8px; margin-top: 0;">Registro</h2>
 
-  <form (ngSubmit)="onSubmit()" [formGroup]="empleadoForm">
-    <label>Nombre:</label>
-    <input formControlName="nombre" type="text" style="width: 100%; margin-bottom: 8px;" />
+  <form (ngSubmit)="onSubmit()" [formGroup]="empleadoForm" style="display: grid; grid-template-columns: 120px 1fr; gap: 12px; align-items: center;">
 
-    <label>Correo:</label>
-    <input formControlName="correo" type="email" style="width: 100%; margin-bottom: 8px;" />
+    <label style="font-weight: bold;">Nombre:</label>
+    <input formControlName="nombre" type="text" style="padding: 6px; border: 1px solid #ddd; border-radius: 3px;" />
 
-    <label>Teléfono:</label>
-    <input formControlName="telefono" type="text" style="width: 100%; margin-bottom: 8px;" />
+    <label style="font-weight: bold;">Correo:</label>
+    <input formControlName="correo" type="email" style="padding: 6px; border: 1px solid #ddd; border-radius: 3px;" />
 
-    <label>Fecha de Nacimiento:</label>
-    <div style="display: flex; align-items: center; margin-bottom: 8px;">
-      <input formControlName="fechaNacimiento" type="date" style="flex: 1;" />
+    <label style="font-weight: bold;">Teléfono:</label>
+    <input formControlName="telefono" type="text" style="padding: 6px; border: 1px solid #ddd; border-radius: 3px;" />
+
+    <label style="font-weight: bold;">Fecha de Nacimiento:</label>
+    <div style="display: flex; align-items: center;">
+      <input formControlName="fechaNacimiento" type="date" style="padding: 6px; border: 1px solid #ddd; border-radius: 3px; flex: 1;" />
     </div>
 
-    <label>Sexo:</label>
-    <div style="margin-bottom: 12px;">
-      <input type="radio" [value]="'Masculino'" formControlName="sexo" /> Masculino
-      <input type="radio" [value]="'Femenino'" formControlName="sexo" style="margin-left: 12px;" /> Femenino
+    <label style="font-weight: bold;">Sexo:</label>
+    <div style="display: flex; gap: 16px;">
+      <label><input type="radio" [value]="'Masculino'" formControlName="sexo" /> Masculino</label>
+      <label><input type="radio" [value]="'Femenino'" formControlName="sexo" /> Femenino</label>
     </div>
 
-    <button type="submit">Agregar</button>
+    <div style="grid-column: 2;">
+      <button type="submit" style="background-color: #4CAF50; color: white; border: none; padding: 8px 16px; border-radius: 3px; cursor: pointer;">Agregar</button>
+    </div>
   </form>
 </div>

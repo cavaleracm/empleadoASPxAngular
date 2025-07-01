@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { IEmpleado } from '../interfaces/empleado';
 import { environment } from '../../environments/environment.development';
 
@@ -12,6 +12,9 @@ export class EmpleadoService {
   private _apiUrl: string = this._endPoint + 'Empleados/';
 
   constructor(private http: HttpClient) {}
+
+  private empleadoCreadoSource = new Subject<void>();
+  empleadoCreado$ = this.empleadoCreadoSource.asObservable();
 
   // Obtener lista de empleados
   getList(): Observable<IEmpleado[]> {
@@ -27,4 +30,9 @@ export class EmpleadoService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this._apiUrl}Delete/${id}`);
   }
+
+   notificarEmpleadoCreado() {
+    this.empleadoCreadoSource.next();
+  }
+  
 }
